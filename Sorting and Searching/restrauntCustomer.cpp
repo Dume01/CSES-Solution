@@ -1,37 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
+int main() 
+{
     int n;
     cin >> n;
     vector<pair<int,bool>> p;
-
     for(int i=0;i<n;i++)
     {
         int x,y;
-        cin >>x>>y;
-	if(n==10 && x==45 && y==84)
-	{
-		cout << "7" << endl;
-		return 0;
-	}
+        cin >> x >> y;
         p.push_back({x,true});
         p.push_back({y,false});
     }
-    int ans=0;
-    int maxi=INT_MIN;
     sort(p.begin(),p.end());
-    for(int i=0;i<n;i++)
+    int cnt=0;
+    int maxi=0;
+    for(int i=0;i<p.size();i++)
     {
-        if(p[i].second==1)
-        {
-            ans++;
-            maxi=max(ans,maxi);
-        }
-        else
-        {
-            ans--;
-        }
+      if(p[i].second==true)
+        cnt++;
+      else
+      {
+        maxi=max(maxi,cnt);
+        cnt--;
+      }
     }
-    cout << maxi;
+    cout << maxi << endl;
+    return 0;
 }
